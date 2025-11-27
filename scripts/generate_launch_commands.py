@@ -1,5 +1,4 @@
 import json
-import os
 from .run_experiments import get_benchmarks, get_optimizers
 from .experiment_configs import LM_CONFIGS
 
@@ -18,7 +17,7 @@ for seed in SEEDS:
         # Get the instantiated benchmark just for the name
         benchmark = benchmark_meta.benchmark(dataset_mode=dataset_mode) if dataset_mode else benchmark_meta.benchmark()
         benchmark_name = benchmark_meta.name or benchmark.__class__.__name__
-        num_threads = getattr(benchmark_meta, 'num_threads', None) or os.cpu_count()
+        num_threads = getattr(benchmark_meta, 'num_threads', None) or 32
 
         for program_idx, program in enumerate(benchmark_meta.program):
             prog_name = getattr(program, "_name", program.__class__.__name__)
