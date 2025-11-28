@@ -45,11 +45,23 @@ LM_CONFIGS = [
         "train_kwargs": TRAIN_KWARGS_GRPO_QWEN,
     },
     {
+        "name": "llama3.1-8b-arbor",
+        "model": "openai/arbor:meta-llama/Meta-Llama-3.1-8B-Instruct",
+        "api_key": "API_KEY",                    # 或 env:XXX
+        "api_base": "http://localhost:{portnum}/v1/",  # 一定要保留 {portnum}
+        "temperature": 0.2,
+        "top_p": 0.9,
+        "top_k": 40,
+        "launch_kwargs": LAUNCH_KWARGS,
+        "train_kwargs": TRAIN_KWARGS_GRPO_QWEN,  # 或你另外定義的 TRAIN_KWARGS
+    },
+    {
         "name": "gpt-41-mini",
         "model": "openai/gpt-4.1-mini-2025-04-14",
         "api_key": "env:OPENAI_API_KEY",
         "temperature": 1.0,
     },
+    
 ]
 
 def get_benchmarks():
